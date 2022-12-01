@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class DragRagDoll : MonoBehaviour
 {
-    float speed = 10f;
+    float speed = 50f;
     GameObject selected;
     float vector_x;
     float vector_y;
     int layerMask = 1 << 6;
 
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.touchCount!=0 && selected==null)
@@ -23,7 +21,11 @@ public class DragRagDoll : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.touchCount == 0)
-        {
+        {   
+            if(selected!=null)
+            {
+                selected.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0) * speed;
+            }
             selected = null;
         }
         if (selected != null)
