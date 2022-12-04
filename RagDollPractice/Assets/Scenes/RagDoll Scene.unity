@@ -1693,9 +1693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diamond: {fileID: 6874533646516965322, guid: 5140b4d548096cf4f8fd80d24c19c33f, type: 3}
   targetPosition: {x: 500, y: 1300, z: 0}
-  duration: 2
+  duration: 1
   parent: {fileID: 1923492281}
-  targetRotate: {x: 0, y: 0, z: 720}
+  targetRotate: {x: 0, y: 0, z: 360}
 --- !u!114 &1925976083
 MonoBehaviour:
   m_ObjectHideFlags: 0

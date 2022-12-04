@@ -11,6 +11,7 @@ public class Diamond : MonoBehaviour
     public Transform parent;
     public Vector3 targetRotate;
     Sequence mySequence;
+    
 
     private void Start()
     {
@@ -20,9 +21,11 @@ public class Diamond : MonoBehaviour
     public void SpawnDiamond()
     {
         GameObject currentDiamond = Instantiate(diamond, this.transform.position, Quaternion.identity, parent);
-        mySequence.Append(currentDiamond.transform.DOMove(targetPosition, duration, false));
-        mySequence.Insert(0, currentDiamond.transform.DORotate(targetRotate, 2f, RotateMode.FastBeyond360));
-        mySequence.Insert(0, currentDiamond.transform.DOShakeScale(duration, 1f, 2, 30f, true));
+        mySequence.Append(currentDiamond.transform.DOScale(new Vector3(3f, 3f, 3f), duration/10));
+        mySequence.Append(currentDiamond.transform.DOMove(targetPosition, duration, false).SetEase(Ease.InQuad));
+        mySequence.Insert(1, currentDiamond.transform.DORotate(targetRotate, duration, RotateMode.FastBeyond360));
+        mySequence.Append(currentDiamond.transform.DOScale(new Vector3(1f, 1f, 1f), duration/5).SetDelay(duration/5));
+        //mySequence.Insert(1, currentDiamond.transform.DOShakeScale(duration, 1f, 2, 30f, true));
         Destroy(currentDiamond, duration + 0.1f);
 }
 
